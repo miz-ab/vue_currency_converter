@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <!--<card v-on:remove_article="remove_article($event)" v-for="article in articles" :title="article.title" :content="article.content"></card>-->
+                    <label for="">From:</label>
+                    <select v-model="from" name="" id="" class="form-control">
+                        <option :value="currency.id" v-for="currency in formattedcurrencies">{{currency.currencyName}}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="">To:</label>
+                    <select v-model="to" name="" id="" class="form-control">
+                        <option :value="currency.id" v-for="currency in formattedcurrencies">{{currency.currencyName}}</option>
+                    </select>
+                </div>
+            </div> <!-- end of row -->
+
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <input v-model="amount" type="text" class="form-control my-5" placeholder="Enter...">
+                    <div class="text-center">
+                        <button :disabled="isdisabled" @click="convertCurrencies()" class="btn btn-lg btn-primary">
+                            {{ loading ? 'Converting...':'Convert' }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 offset-3">
+                    <div class="text-center">
+                        <h1 class="text-center my-5 display-2">
+                            {{calculateresult}}
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="js/app.js"></script>
+    
+</body>
+
+
+</html>
